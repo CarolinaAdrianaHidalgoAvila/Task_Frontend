@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <app-task-filter></app-task-filter>
+        <app-task-table [taskList]="taskList$ | async"></app-task-table>
+      </div>
+      <div class="col">
+        <app-task-form (saveTask)="onSaveTask($event)"></app-task-form>
+      </div>
+  
+    </div>
+  
+  </div>

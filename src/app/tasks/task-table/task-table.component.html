@@ -1,0 +1,3 @@
+<ng-container *ngFor="let task of taskList; let i = index">
+    <app-task-table-item [task]="task" (click)="openTask(task)"></app-task-table-item>
+  </ng-container>
