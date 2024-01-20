@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup" novalidate>
-  <h4>Tarea</h4>
+  <h4>Estado</h4>
     <div class="mb-3">
       <label for="nameControl" class="form-label">Name</label>
       <input type="email" class="form-control" id="nameControl" formControlName="name" [ngClass]="{'is-invalid': !!nameErrors && !this.formGroup.controls.name.pristine}" autocomplete="off">
@@ -18,10 +18,5 @@
         <span *ngIf="descriptioErrors['minlength']">Description should be greater than 3 characters</span>
         <span *ngIf="descriptioErrors['maxlength']">Description should be less than 2000 characters</span>
       </div>
-    </div>
-    <app-category-form></app-category-form>
-    <app-status-form></app-status-form>
-    <div class="mb-3">
-      <button type="button" class="btn btn-success" (click)="save()">Save</button>
     </div>
   </form>

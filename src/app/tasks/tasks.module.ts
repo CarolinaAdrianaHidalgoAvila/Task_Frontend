@@ -9,6 +9,8 @@ import { TaskService } from './services/task.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TasksRoutingModule } from './tasks-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CategoryModule } from '../category/category.module';
+import { StatusModule } from '../status/status.module';
 
 
 @NgModule({
@@ -17,13 +19,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     TaskTableComponent,
     TaskTableItemComponent,
     TaskFormComponent,
-    TaskFilterComponent
+    TaskFilterComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     TasksRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StatusModule,
+    CategoryModule
   ],
   exports: [
     TaskListComponent
