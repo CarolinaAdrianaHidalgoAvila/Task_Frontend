@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, catchError, first, of, tap, throwError } f
 
 @Injectable()
 export class CategoryService {
-  private url = 'http://localhost:8080/states';
+  private url = 'http://localhost:8080/categories';
   private categoryCache = new BehaviorSubject<Category[]>([]);
   categoryList$ = this.categoryCache.asObservable();
 

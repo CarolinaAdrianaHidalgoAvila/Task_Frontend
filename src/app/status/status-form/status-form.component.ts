@@ -1,27 +1,20 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { Category, Status, Task } from 'src/app/shared/models/task.model';
-import { EditTaskService } from '../services/edit-task.service';
+import { Status} from 'src/app/shared/models/task.model';
+import { EditStatusService } from '../services/edit-status.service';
 
 @Component({
-  selector: 'app-task-form',
-  templateUrl: './task-form.component.html',
-  styleUrls: ['./task-form.component.scss']
+  selector: 'app-status-form',
+  templateUrl: './status-form.component.html',
+  styleUrls: ['./status-form.component.scss']
 })
-export class TaskFormComponent implements OnInit {
-
-  @Output() saveTask = new EventEmitter<Task>();
+export class StatusFormComponent implements OnInit{
+  @Output() saveStatus = new EventEmitter<Status>();
 
   formGroup = new FormGroup({
     uuid: new FormControl<string | null>(null),
     name: new FormControl<string>('', [Validators.required, Validators.maxLength(200), Validators.minLength(3)]),
     description: new FormControl<string>('', [Validators.required, Validators.maxLength(2000), Validators.minLength(3)]),
-    categoryData: new FormGroup({
-      name: new FormControl<string>('', [Validators.required]),
-    }),
-    statusData: new FormGroup({
-      name: new FormControl<string>('', [Validators.required]),
-    }),
   });
 
   get nameErrors(): ValidationErrors | null {
@@ -32,7 +25,7 @@ export class TaskFormComponent implements OnInit {
     return this.formGroup.controls.description.errors;
   }
 
-  constructor(private editTaskService: EditTaskService) {
+  constructor(private editStatusService: EditStatusService) {
 
   }
 
@@ -40,20 +33,20 @@ export class TaskFormComponent implements OnInit {
     this.formGroup.controls.name.valueChanges.subscribe((value) => {console.log(value)})
     this.formGroup.controls.description.valueChanges.subscribe((value) => {console.log(value)})
 
-    this.editTaskService.taskToEdit$.subscribe((task) => {
-      this.formGroup.patchValue(task);
+    this.editStatusService.statusToEdit$.subscribe((status) => {
+      this.formGroup.patchValue(status);
     });
   }
 
   save() {
-    console.log('saving on task form')
+    console.log('saving on status form')
     if (!this.formGroup.valid) {
       this.formGroup.updateValueAndValidity();
       return;
     }
 
-    const taskFormValue = this.formGroup.value;
-    this.saveTask.emit(taskFormValue as Task);
+    const statusFormValue = this.formGroup.value;
+    this.saveStatus.emit(statusFormValue as Status);
   }
 
 }

@@ -1,0 +1,22 @@
+<form [formGroup]="formGroup" novalidate>
+  <h4>Categoria</h4>
+  <div class="mb-3">
+    <label for="nameControl" class="form-label">Name</label>
+    <input type="email" class="form-control" id="nameControl" formControlName="name" [ngClass]="{'is-invalid': !!nameErrors && !this.formGroup.controls.name.pristine}" autocomplete="off">
+    <div *ngIf="nameErrors" class="invalid-feedback">
+      <span *ngIf="nameErrors['required']">Name is Required</span>
+      <span *ngIf="nameErrors['minlength']">Name should be greater than 3 characters</span>
+      <span *ngIf="nameErrors['maxlength']">Name should be less than 200 characters</span>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="descriptionControl" class="form-label">Description</label>
+    <textarea class="form-control" id="descriptionControl" rows="3" formControlName="description" [ngClass]="{'is-invalid': !!descriptioErrors && !this.formGroup.controls.description.pristine}"></textarea>
+    <div *ngIf="descriptioErrors" class="invalid-feedback">
+      <span *ngIf="descriptioErrors['required']">Description is Required</span>
+      <span *ngIf="descriptioErrors['minlength']">Description should be greater than 3 characters</span>
+      <span *ngIf="descriptioErrors['maxlength']">Description should be less than 2000 characters</span>
+    </div>
+  </div>
+</form>

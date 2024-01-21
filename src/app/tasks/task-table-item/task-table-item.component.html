@@ -1,1 +1,15 @@
-<p>task-table-item works!</p>
+<div class="card" *ngIf="task">
+    <div class="card-body">
+      <!-- <div class="card-body"> -->
+        <h5 class="card-title">{{task.name}}</h5>
+        <div class="card-text"><p>{{task.description}}</p>
+          <p class="lh-1 fs-6">
+            <ng-container *ngFor="let cat of task.categories">
+              <span class="badge bg-secondary fs-6">{{cat.name}}</span>
+            </ng-container>
+             &nbsp;
+            <span *ngIf="task.status" class="badge bg-secondary fs-6">{{task.status.name}}</span>
+          </p>
+        </div>
+    </div>
+  </div>
